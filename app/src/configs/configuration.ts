@@ -7,6 +7,9 @@ export const configuration = () => ({
   apiPrefix: 'api', // general prefix for nestjs routes
   port: 3000, // nestjs port
 
+  // Ingester Validator
+  ingesterMaxDistance: 1500,
+
   // Access Logger
   accessLoggerFileSize: '10M', // the max size of the file before it rotates
   accessLoggerFileInterval: '1d', // the max time before it rotates

@@ -1,11 +1,15 @@
 import { CanActivate, ExecutionContext, Injectable, Logger } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { Observable } from 'rxjs';
 import { PrismaService } from 'src/prisma.service';
 import { AisMessageDto } from 'src/routes/ais/dto/ais-message.dto';
 
 @Injectable()
 export class AisValidatorGuard implements CanActivate {
-  constructor(private mysql: PrismaService) {}
+  constructor(
+    private mysql: PrismaService,
+    private config: ConfigService
+  ) {}
   calculateDistance(stationPos: number[], msgPos: number[]) {
     const R = 6371; // Earth's radius in kilometers
     const dLat = this.degToRad(msgPos[0] - stationPos[0]);
@@ -51,7 +55,7 @@ export class AisValidatorGuard implements CanActivate {
 
         const stationPos: number[] = [dbStation.lat, dbStation.lon];
 
-        const maxDistanceThreshold = 1500;
+        const maxDistanceThreshold = this.config.get('ingesterMaxDistance');
 
         const distance = this.calculateDistance(stationPos, msgPos);
 
