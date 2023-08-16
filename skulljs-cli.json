@@ -1,11 +1,21 @@
 {
-	"cli_version": "1.6.1",
+  "cli_version": "1.6.1",
   "projects": {
     "backend": {
       "path": "app",
       "skulljs_repository": "nestjs",
-			"cli" : {"alias":"nest","path":"@nestjs/cli/bin/nest.js"},
+      "cli": {
+        "alias": "nest",
+        "path": "@nestjs/cli/bin/nest.js"
+      },
       "version": "10.0.0"
     }
+  },
+  "latest_build_options": {
+    "app_name": "ais-ingester",
+    "hostname": "127.0.0.1",
+    "port": "3000",
+    "protocol": "http",
+    "manager": "docker"
   }
 }
