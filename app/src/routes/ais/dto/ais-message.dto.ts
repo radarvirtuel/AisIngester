@@ -11,7 +11,7 @@ export class AisMessageDto {
   readonly messageType: number;
 
   @IsDateString()
-  readonly timestamp: string;
+  readonly timeStamp: string;
 
   @IsArray()
   readonly loc?: number[];
@@ -38,7 +38,7 @@ export class AisMessageDto {
   readonly accuracy?: boolean;
 
   @IsString()
-  readonly callsign?: string;
+  readonly callSign?: string;
 
   @IsString()
   readonly destination?: string;
@@ -53,20 +53,20 @@ export class AisMessageDto {
   readonly imo?: number;
 
   @IsNumber()
-  readonly ship_type?: number;
+  readonly shipType?: number;
 
   @IsString()
-  readonly shipname?: string;
+  readonly shipName?: string;
 
   @IsNumber()
-  readonly to_bow?: number;
+  readonly toBow?: number;
 
   @IsNumber()
-  readonly to_port?: number;
+  readonly toPort?: number;
 
   @IsNumber()
-  readonly to_starboard?: number;
+  readonly toStarboard?: number;
 
   @IsNumber()
-  readonly to_stern?: number;
+  readonly toStern?: number;
 }

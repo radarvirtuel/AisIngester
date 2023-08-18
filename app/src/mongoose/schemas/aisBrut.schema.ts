@@ -15,7 +15,7 @@ export class AisBrut {
   stationId: number;
 
   @Prop({ required: true, index: -1 })
-  timestamp: Date;
+  timeStamp: Date;
 
   @Prop({
     required: false,
@@ -46,7 +46,7 @@ export class AisBrut {
   turn?: number;
 
   @Prop()
-  callsign?: string;
+  callSign?: string;
 
   @Prop()
   destination?: string;
@@ -61,22 +61,19 @@ export class AisBrut {
   imo?: number;
 
   @Prop()
-  ship_type?: number;
+  shipType?: number;
 
   @Prop()
-  shipname?: string;
+  shipName?: string;
 
   @Prop()
-  to_bow?: number;
-
+  toBow?: number;
   @Prop()
-  to_port?: number;
-
+  toPort?: number;
   @Prop()
-  to_starboard?: number;
-
+  toStarboard?: number;
   @Prop()
-  to_stern?: number;
+  toStern?: number;
 }
 
 export const AisBrutSchema = SchemaFactory.createForClass(AisBrut);

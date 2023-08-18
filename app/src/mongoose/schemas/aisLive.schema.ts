@@ -9,23 +9,23 @@ export class AisLive {
   mmsi: number;
 
   @Prop({ required: true })
-  cpt_pos: number;
+  cptPos: number;
   @Prop({ required: true, index: -1 })
-  first_ts: Date;
+  firstTs: Date;
   @Prop({ required: true, index: -1 })
-  last_ts: Date;
+  lastTs: Date;
   @Prop({
     required: false,
     type: [Number],
     index: '2d',
   })
-  first_loc?: number[];
+  firstLoc?: number[];
   @Prop({
     required: false,
     type: [Number],
     index: '2d',
   })
-  last_loc?: number[];
+  lastLoc?: number[];
 
   @Prop()
   heading?: number;
@@ -43,7 +43,7 @@ export class AisLive {
   turn?: number;
 
   @Prop()
-  callsign?: string;
+  callSign?: string;
   @Prop()
   destination?: string;
   @Prop()
@@ -53,18 +53,18 @@ export class AisLive {
   @Prop()
   imo?: number;
   @Prop()
-  ship_type?: number;
+  shipType?: number;
   @Prop()
-  shipname?: string;
+  shipName?: string;
 
   @Prop()
-  to_bow?: number;
+  toBow?: number;
   @Prop()
-  to_port?: number;
+  toPort?: number;
   @Prop()
-  to_starboard?: number;
+  toStarboard?: number;
   @Prop()
-  to_stern?: number;
+  toStern?: number;
 }
 
 export const AisLiveSchema = SchemaFactory.createForClass(AisLive);

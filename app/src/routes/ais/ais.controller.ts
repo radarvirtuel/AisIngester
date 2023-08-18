@@ -4,8 +4,8 @@ import { AisService } from './ais.service';
 import { AisMessageDto } from './dto/ais-message.dto';
 import { AisValidator } from 'src/decorators/ais-validator/ais-validator.decorator';
 
-@ApiTags('ais')
-@Controller('ais')
+@ApiTags('ingester')
+@Controller('ingester')
 export class AisController {
   constructor(private readonly aisService: AisService) {}
 

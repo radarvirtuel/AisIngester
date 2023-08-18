@@ -13,24 +13,24 @@ export class AisService {
   ) {}
 
   AIS_DYNAMIC_DATA = ['speed', 'heading', 'turn', 'course', 'maneuver', 'status', 'destination', 'accuracy'];
-  AIS_STATIC_DATA = ['imo', 'callsign', 'ship_type', 'shipname', 'draught', 'to_bow', 'to_stern', 'to_port', 'to_starboard', 'vendorid', 'model', 'serial'];
+  AIS_STATIC_DATA = ['imo', 'callSign', 'shipType', 'shipName', 'draught', 'toBow', 'toStern', 'toPort', 'toStarboard'];
   AIS_LIVE_DATA = [...this.AIS_DYNAMIC_DATA, ...this.AIS_STATIC_DATA, 'eta'];
 
   private async upsertLive(createMessageDto: AisMessageDto) {
-    const { timestamp, loc, mmsi, ...newData } = createMessageDto;
+    const { timeStamp, loc, mmsi, ...newData } = createMessageDto;
     const filter = { mmsi: mmsi };
     const existingDocument = await this.aisLiveModel.findOne(filter).exec();
 
     const update = {
-      $setOnInsert: { first_ts: new Date(timestamp) },
-      $inc: { cpt_pos: 1 },
-      $max: { last_ts: new Date(timestamp) },
+      $setOnInsert: { firstTs: new Date(timeStamp) },
+      $inc: { cptPos: 1 },
+      $max: { lastTs: new Date(timeStamp) },
       $set: {},
     };
 
-    if (loc) update['$set']['last_loc'] = loc;
+    if (loc) update['$set']['lastLoc'] = loc;
 
-    if (!existingDocument || !existingDocument.first_loc) update['$set']['first_loc'] = loc;
+    if (!existingDocument || !existingDocument.firstLoc) update['$set']['firstLoc'] = loc;
 
     for (const prop of this.AIS_LIVE_DATA) {
       if (newData[prop]) update['$set'][prop] = newData[prop];

@@ -9,6 +9,25 @@ datasource db {
 
 model Station {
   id	Int @id
+	city String
+	country String
+	typeBox String
+	typeStation String
+	email String
+	createdAt DateTime @default(now())
+	range Int @default(400)
+	img String
+	status Boolean
 	lat Float
 	lon Float
+}
+
+model Vessel {
+  mmsi	Int @id
+	shipName String?
+	imo String?
+	callSign String?
+	shipType Int?
+	owner String?
+	updated DateTime @default(now())
 }
