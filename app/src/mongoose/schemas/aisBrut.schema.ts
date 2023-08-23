@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { pointSchema } from './point.schema';
 
 export type AisBrutDocument = HydratedDocument<AisBrut>;
 
@@ -19,14 +18,11 @@ export class AisBrut {
   timeStamp: Date;
 
   @Prop({
-    type: pointSchema,
+    type: [Number],
     required: false,
     index: '2dsphere',
   })
-  loc?: {
-    type: string;
-    coordinates: [number, number];
-  };
+  loc?: number[];
 
   @Prop()
   heading?: number;

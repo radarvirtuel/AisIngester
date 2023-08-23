@@ -17,7 +17,8 @@ export class AisService {
   AIS_LIVE_DATA = [...this.AIS_DYNAMIC_DATA, ...this.AIS_STATIC_DATA, 'eta'];
 
   private async upsertLive(createMessageDto: AisMessageDto) {
-    const { timeStamp, loc, mmsi, ...newData } = createMessageDto;
+    const message = { ...createMessageDto };
+    const { timeStamp, loc, mmsi, ...newData } = message;
     const filter = { mmsi: mmsi };
     const existingDocument = await this.aisLiveModel.findOne(filter).exec();
     const update = {
@@ -28,16 +29,11 @@ export class AisService {
     };
     //
     if (loc) {
-      update['$set']['lastLoc'] = {
-        type: 'Point',
-        coordinates: loc.reverse(),
-      };
+      const reversedLoc = loc.reverse();
+      update['$set']['lastLoc'] = reversedLoc;
 
       if (!existingDocument || !existingDocument.firstLoc) {
-        update['$set']['firstLoc'] = {
-          type: 'Point',
-          coordinates: loc.reverse(),
-        };
+        update['$set']['firstLoc'] = reversedLoc;
       }
     }
 
@@ -51,15 +47,13 @@ export class AisService {
   }
 
   private insertBrut(createMessageDto: AisMessageDto) {
+    const message = { ...createMessageDto };
     let loc = undefined;
-    if (createMessageDto.loc) {
-      loc = {
-        type: 'Point',
-        coordinates: createMessageDto.loc.reverse(),
-      };
+    if (message.loc) {
+      loc = message.loc.reverse();
     }
 
-    return this.aisBrutModel.create({ ...createMessageDto, loc: loc });
+    return this.aisBrutModel.create({ ...message, loc: loc });
   }
 
   insertData(createMessageDto: AisMessageDto) {

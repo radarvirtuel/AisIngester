@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { pointSchema } from './point.schema';
 
 export type AisLiveDocument = HydratedDocument<AisLive>;
 
@@ -16,23 +15,17 @@ export class AisLive {
   @Prop({ required: true, index: -1 })
   lastTs: Date;
   @Prop({
-    type: pointSchema,
+    type: [Number],
     required: false,
     index: '2dsphere',
   })
-  firstLoc?: {
-    type: string;
-    coordinates: [number, number];
-  };
+  firstLoc?: number[];
   @Prop({
-    type: pointSchema,
+    type: [Number],
     required: false,
     index: '2dsphere',
   })
-  lastLoc?: {
-    type: string;
-    coordinates: [number, number];
-  };
+  lastLoc?: number[];
 
   @Prop()
   heading?: number;
