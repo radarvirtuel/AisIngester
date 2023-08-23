@@ -5,7 +5,7 @@ export const configuration = () => ({
   // Api
   production: false,
   apiPrefix: 'ais', // general prefix for nestjs routes
-  port: 3000, // nestjs port
+  port: 3002, // nestjs port
 
   // Access Logger
   accessLoggerFileSize: '10M', // the max size of the file before it rotates
@@ -15,7 +15,7 @@ export const configuration = () => ({
   helmetContentSecurityPolicy: false, // false for sk build
 
   // Cors
-  corsOrigins: ['http://localhost:3000'], // allowed origins | Ex: angular
+  corsOrigins: ['http://localhost:3002'], // allowed origins | Ex: angular
 
   // OpenAPI
   openAPIPath: 'api', // path of the open api docs

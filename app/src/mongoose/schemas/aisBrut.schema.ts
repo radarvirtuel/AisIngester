@@ -21,6 +21,7 @@ export class AisBrut {
     type: [Number],
     required: false,
     index: '2dsphere',
+		default: undefined
   })
   loc?: number[];
 

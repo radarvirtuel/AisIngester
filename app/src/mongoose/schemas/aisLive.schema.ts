@@ -18,12 +18,14 @@ export class AisLive {
     type: [Number],
     required: false,
     index: '2dsphere',
+		default: undefined
   })
   firstLoc?: number[];
   @Prop({
     type: [Number],
     required: false,
     index: '2dsphere',
+		default: undefined
   })
   lastLoc?: number[];
 
