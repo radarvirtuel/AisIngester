@@ -20,7 +20,6 @@ export class AisBrut {
   @Prop({
     type: [Number],
     required: false,
-    index: '2dsphere',
 		default: undefined
   })
   loc?: number[];
