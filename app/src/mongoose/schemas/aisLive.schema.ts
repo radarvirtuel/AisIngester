@@ -18,14 +18,14 @@ export class AisLive {
     type: [Number],
     required: false,
     index: '2dsphere',
-		default: undefined
+    default: undefined,
   })
   firstLoc?: number[];
   @Prop({
     type: [Number],
     required: false,
     index: '2dsphere',
-		default: undefined
+    default: undefined,
   })
   lastLoc?: number[];
 
@@ -45,28 +45,11 @@ export class AisLive {
   turn?: number;
 
   @Prop()
-  callSign?: string;
-  @Prop()
   destination?: string;
   @Prop()
   draught?: number;
   @Prop()
   eta?: Date;
-  @Prop()
-  imo?: number;
-  @Prop()
-  shipType?: number;
-  @Prop()
-  shipName?: string;
-
-  @Prop()
-  toBow?: number;
-  @Prop()
-  toPort?: number;
-  @Prop()
-  toStarboard?: number;
-  @Prop()
-  toStern?: number;
 }
 
 export const AisLiveSchema = SchemaFactory.createForClass(AisLive);

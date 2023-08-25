@@ -20,7 +20,7 @@ export class AisBrut {
   @Prop({
     type: [Number],
     required: false,
-		default: undefined
+    default: undefined,
   })
   loc?: number[];
 
@@ -46,9 +46,6 @@ export class AisBrut {
   turn?: number;
 
   @Prop()
-  callSign?: string;
-
-  @Prop()
   destination?: string;
 
   @Prop()
@@ -56,24 +53,6 @@ export class AisBrut {
 
   @Prop()
   eta?: Date;
-
-  @Prop()
-  imo?: number;
-
-  @Prop()
-  shipType?: number;
-
-  @Prop()
-  shipName?: string;
-
-  @Prop()
-  toBow?: number;
-  @Prop()
-  toPort?: number;
-  @Prop()
-  toStarboard?: number;
-  @Prop()
-  toStern?: number;
 }
 
 export const AisBrutSchema = SchemaFactory.createForClass(AisBrut);
