@@ -68,11 +68,12 @@ export class AisService {
   }
 
   private insertBrut(createMessageDto: AisMessageDto) {
+    const msgCopy = { ...createMessageDto };
     for (const prop of this.AIS_STATIC_DATA) {
-      delete createMessageDto[prop];
+      delete msgCopy[prop];
     }
 
-    return this.aisBrutModel.create(createMessageDto);
+    return this.aisBrutModel.create(msgCopy);
   }
 
   insertData(createMessageDto: AisMessageDto) {
