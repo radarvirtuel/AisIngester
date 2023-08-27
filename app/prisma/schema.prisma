@@ -23,15 +23,16 @@ model Station {
 }
 
 model Vessel {
-  mmsi     Int      @id
-  shipName String?
-  imo      Int?
-  callSign String?
-  shipType Int?
-  owner    String?
-	toBow		 Int?
-	toStern	 Int?
-	toPort	 Int?
-	toStarboard Int?
-  updated  DateTime @default(now())
+  mmsi        Int      @id
+  shipName    String?
+  imo         Int?
+  callSign    String?
+  shipType    Int?
+  owner       String?
+  toBow       Int?
+  toStern     Int?
+  toPort      Int?
+  toStarboard Int?
+  updated     DateTime @default(now())
+  updatable   Boolean  @default(true)
 }

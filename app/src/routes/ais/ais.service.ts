@@ -47,6 +47,7 @@ export class AisService {
     const staticInsert = this.prisma.vessel.upsert({
       where: {
         mmsi: mmsi,
+        updatable: true,
       },
       update: {
         ...staticUpdate,
