@@ -10,6 +10,9 @@ export class AisMessageDto {
   @IsNumber()
   readonly messageType: number;
 
+  @IsNumber()
+  readonly scriptVersion: number;
+
   @IsDateString()
   readonly timeStamp: string;
 

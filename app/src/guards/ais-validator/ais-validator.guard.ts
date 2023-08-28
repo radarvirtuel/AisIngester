@@ -30,6 +30,8 @@ export class AisValidatorGuard implements CanActivate {
 
         const requestData: AisMessageDto = request.body;
 
+        if (requestData.scriptVersion !== 0.1) return resolve(false);
+
         const stationId = requestData.stationId;
 
         if (!stationId) return resolve(false);
